@@ -3,6 +3,7 @@ import "normalize.css";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyle } from "./styles/GlobalStyles";
 import { theme } from "./styles/theme";
+import "./styles/tailwind.css";
 
 export const StyleProviders: React.FC = ({ children }) => {
   return (
