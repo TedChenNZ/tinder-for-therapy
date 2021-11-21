@@ -1,12 +1,14 @@
 import React, { useMemo } from "react";
 import { ITherapist, ITherapistReaction } from "src/services/therapist/TherapistAPI";
 import { TherapistService } from "src/services/therapist/TherapistService";
-import { TherapistView } from "./TherapistCard/TherapistView";
+import { TherapistCard } from "./TherapistCard";
 
 interface ITherapistsViewProps {
 	therapists: ITherapist[];
 	therapistReactions: ITherapistReaction[];
 }
+
+const MAX_CARDS_TO_STACK = 3;
 
 export function TherapistsView({ therapists, therapistReactions }: ITherapistsViewProps) {
 	const updateTherapistReaction = TherapistService.useUpdateTherapistReactions();
@@ -32,9 +34,15 @@ export function TherapistsView({ therapists, therapistReactions }: ITherapistsVi
 	);
 
 	return (
-		<div className="p-8 w-full flex flex-col items-center">
+		<div className="p-8 w-full flex flex-col items-center relative">
 			{therapistsToShow?.length ? (
-				<TherapistView therapist={therapistsToShow[0]} onTherapistReaction={onTherapistReaction} />
+				therapistsToShow.slice(0, MAX_CARDS_TO_STACK).map((therapist, i) => {
+					return (
+						<div key={therapist.id} className="absolute" style={{ zIndex: therapistsToShow?.length - i }}>
+							<TherapistCard key={therapist.id} therapist={therapist} onTherapistReaction={onTherapistReaction} />
+						</div>
+					);
+				})
 			) : (
 				<div>
 					<p>No more therapists</p>
