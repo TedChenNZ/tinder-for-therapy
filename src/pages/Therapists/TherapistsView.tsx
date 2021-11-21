@@ -1,4 +1,5 @@
 import React, { useMemo } from "react";
+import { useQueryClient } from "react-query";
 import { ITherapist, ITherapistReaction } from "src/services/therapist/TherapistAPI";
 import { TherapistService } from "src/services/therapist/TherapistService";
 import { TherapistCard } from "./TherapistCard";
@@ -49,10 +50,26 @@ export function TherapistsView({ therapists, therapistReactions }: ITherapistsVi
 					);
 				})
 			) : (
-				<div data-id="no-more-therapists">
-					<p>No more therapists</p>
-				</div>
+				<NoMoreTherapists />
 			)}
+		</div>
+	);
+}
+
+function NoMoreTherapists() {
+	const queryClient = useQueryClient();
+	return (
+		<div data-id="no-more-therapists" className="text-center">
+			<p>No more therapists</p>
+			<button
+				onClick={() => {
+					localStorage.clear();
+					queryClient.refetchQueries();
+				}}
+				className="btn btn-sm btn-outline font-normal m-4"
+			>
+				Reset Data
+			</button>
 		</div>
 	);
 }
