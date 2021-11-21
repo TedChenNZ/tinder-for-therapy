@@ -1,12 +1,10 @@
 import { SetupProviders } from "./setup/SetupProviders";
-import Therapists from "./therapists";
+import Therapists from "../Therapists";
 
-function App() {
+export default function App() {
 	return (
 		<SetupProviders>
 			<Therapists />
 		</SetupProviders>
 	);
 }
-
-export default App;
