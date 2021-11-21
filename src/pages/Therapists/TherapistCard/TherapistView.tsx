@@ -29,7 +29,7 @@ export function TherapistView({ therapist, onTherapistReaction }: ITherapistView
 
 			{/** Quick Info */}
 
-			<div className="text-sm h-24">
+			<div className="text-sm h-28">
 				<ul style={{ margin: 0 }}>
 					<div className="flex">
 						<img className="flex align-middle h-5 w-6 pb-0.5 pt-1 pr-2 m-0" style={{ margin: 0 }} src={locationSVG} />
