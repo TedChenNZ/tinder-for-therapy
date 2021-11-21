@@ -32,7 +32,7 @@ export default function TherapistsView({ therapists, therapistReactions }: ITher
 	);
 
 	return (
-		<div className="p-8">
+		<div className="p-8 w-full flex flex-col items-center">
 			{therapistsToShow?.length ? (
 				<TherapistView therapist={therapistsToShow[0]} onTherapistReaction={onTherapistReaction} />
 			) : (

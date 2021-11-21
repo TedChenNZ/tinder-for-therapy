@@ -1,5 +1,6 @@
 import React from "react";
 import { TherapistService } from "src/services/therapist/TherapistService";
+import Header from "./Header";
 import LoadingScreen from "./LoadingScreen";
 import TherapistsView from "./TherapistsView";
 
@@ -11,10 +12,12 @@ export default function Therapists({}: ITherapistsProps) {
 	if (!therapistsQuery.isFetched || !therapistReactionsQuery.isFetched) {
 		return <LoadingScreen />;
 	}
+	const therapists = therapistsQuery.data?.therapists || [];
+	const therapistReactions = therapistReactionsQuery.data || [];
 	return (
-		<TherapistsView
-			therapists={therapistsQuery.data?.therapists || []}
-			therapistReactions={therapistReactionsQuery.data || []}
-		/>
+		<div>
+			<Header therapistReactions={therapistReactions} />
+			<TherapistsView therapists={therapists} therapistReactions={therapistReactions} />
+		</div>
 	);
 }

@@ -2,7 +2,7 @@ import React from "react";
 import { IPaymentOption, ITherapist, ITherapistReaction, Reaction } from "src/services/therapist/TherapistAPI";
 import locationSVG from "./location.svg";
 import crossSVG from "./cross.svg";
-import heartSVG from "./heart.svg";
+import heartSVG from "./heart-white.svg";
 
 interface ITherapistViewProps {
 	therapist: ITherapist;
@@ -11,7 +11,7 @@ interface ITherapistViewProps {
 
 export default function TherapistView({ therapist, onTherapistReaction }: ITherapistViewProps) {
 	return (
-		<div className="border border-gray-400 bg-white rounded-2xl p-8 shadow-lg prose">
+		<div className="border border-gray-400 bg-white rounded-2xl p-8 shadow-lg prose w-full">
 			{/** Header */}
 			<div className="flex flex-col items-center">
 				<img className="mb-8 rounded-full w-24 h-24 object-cover" src={therapist.primaryImageUrl} />
