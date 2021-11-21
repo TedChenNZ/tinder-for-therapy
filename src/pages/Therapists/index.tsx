@@ -7,8 +7,14 @@ interface ITherapistsProps {}
 
 export default function Therapists({}: ITherapistsProps) {
 	const therapistsQuery = TherapistService.useGetTherapists();
-	if (!therapistsQuery.isFetched) {
+	const therapistReactionsQuery = TherapistService.useGetTherapistReactions();
+	if (!therapistsQuery.isFetched || !therapistReactionsQuery.isFetched) {
 		return <LoadingScreen />;
 	}
-	return <TherapistsView therapists={therapistsQuery.data?.therapists || []} />;
+	return (
+		<TherapistsView
+			therapists={therapistsQuery.data?.therapists || []}
+			therapistReactions={therapistReactionsQuery.data || []}
+		/>
+	);
 }
