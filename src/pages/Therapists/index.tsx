@@ -15,7 +15,7 @@ export default function Therapists({}: ITherapistsProps) {
 	const therapists = therapistsQuery.data?.therapists || [];
 	const therapistReactions = therapistReactionsQuery.data || [];
 	return (
-		<div>
+		<div data-id="therapists">
 			<Header therapistReactions={therapistReactions} />
 			<TherapistsView therapists={therapists} therapistReactions={therapistReactions} />
 		</div>

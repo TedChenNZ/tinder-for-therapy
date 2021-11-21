@@ -22,7 +22,7 @@ export interface ITherapist {
 	nextAppointmentTime: string; // Date
 }
 
-interface IGetTherapistsResponse {
+export interface IGetTherapistsResponse {
 	therapists: ITherapist[];
 }
 

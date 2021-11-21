@@ -12,7 +12,10 @@ export interface ITherapistViewProps {
 export function TherapistView({ therapist, onTherapistReaction }: ITherapistViewProps) {
 	const [isShowingMore, setIsShowingMore] = useState(false);
 	return (
-		<div className={`border border-gray-400 bg-white rounded-2xl p-8 shadow-lg prose w-full`}>
+		<div
+			data-id={`therapist ${therapist.id}`}
+			className={`border border-gray-400 bg-white rounded-2xl p-8 shadow-lg prose w-full`}
+		>
 			{/** Header */}
 			<div className="flex flex-col items-center">
 				<img className="mb-8 rounded-full w-24 h-24 object-cover" src={therapist.primaryImageUrl} />
@@ -93,12 +96,14 @@ export function TherapistView({ therapist, onTherapistReaction }: ITherapistView
 			{/** Reactions */}
 			<div className="w-full flex justify-center	">
 				<button
+					data-id="btn-dislike"
 					className="btn btn-outline btn-circle btn-neutral w-16 h-16 m-2"
 					onClick={() => onTherapistReaction({ therapistID: therapist.id, reaction: Reaction.DISLIKE })}
 				>
 					<img style={{ margin: 0 }} className="h-6 w-6" src={crossSVG} />
 				</button>
 				<button
+					data-id="btn-like"
 					className="btn btn-primary btn-circle w-16 h-16 m-2"
 					onClick={() => onTherapistReaction({ therapistID: therapist.id, reaction: Reaction.LIKE })}
 				>

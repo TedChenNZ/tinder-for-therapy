@@ -38,7 +38,12 @@ export function TherapistsView({ therapists, therapistReactions }: ITherapistsVi
 			{therapistsToShow?.length ? (
 				therapistsToShow.slice(0, MAX_CARDS_TO_STACK).map((therapist, i) => {
 					return (
-						<div key={therapist.id} className="absolute" style={{ zIndex: therapistsToShow?.length - i }}>
+						<div
+							key={therapist.id}
+							className="absolute"
+							style={{ zIndex: therapistsToShow?.length - i }}
+							data-id={`therapist-card-wrapper-${i}`}
+						>
 							<TherapistCard key={therapist.id} therapist={therapist} onTherapistReaction={onTherapistReaction} />
 						</div>
 					);

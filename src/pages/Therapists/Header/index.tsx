@@ -15,7 +15,7 @@ export function Header({ therapistReactions }: IHeaderProps) {
 		<div className="flex w-full justify-between h-16 p-4">
 			<img src={logoImg} />
 			<div className="flex items-center text-brand">
-				<span>{totalLikes}</span> <img className="h-full" src={heartSVG} />
+				<span data-id="total-likes">{totalLikes}</span> <img className="h-full" src={heartSVG} />
 			</div>
 		</div>
 	);
