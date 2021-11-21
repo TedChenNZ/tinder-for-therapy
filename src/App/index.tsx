@@ -1,19 +1,12 @@
-import styled from "styled-components";
-
-const AppWrapper = styled.div`
-  padding: 1rem;
-`;
+import { SetupProviders } from "./setup/SetupProviders";
+import Therapists from "./therapists";
 
 function App() {
-  return (
-    <AppWrapper>
-      <div className="flex justify-center">
-        <h1 className="font-bold text-2xl text-blue-900">
-          React and Tailwind with Vitejs!
-        </h1>
-      </div>
-    </AppWrapper>
-  );
+	return (
+		<SetupProviders>
+			<Therapists />
+		</SetupProviders>
+	);
 }
 
 export default App;
