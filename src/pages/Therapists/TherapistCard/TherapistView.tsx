@@ -25,12 +25,12 @@ export function TherapistView({ therapist, onTherapistReaction }: ITherapistView
 				</h3>
 			</div>
 
-			<hr />
+			<div className="h-px w-full bg-gray-200 my-4" />
 
 			{/** Quick Info */}
 
 			<div className="text-sm h-24">
-				<ul>
+				<ul style={{ margin: 0 }}>
 					<div className="flex">
 						<img className="flex align-middle h-5 w-6 pb-0.5 pt-1 pr-2 m-0" style={{ margin: 0 }} src={locationSVG} />
 						<span>{therapist.location}</span>
@@ -111,7 +111,7 @@ export function TherapistView({ therapist, onTherapistReaction }: ITherapistView
 
 const H2: React.FC = ({ children }) => {
 	return (
-		<div className="flex items-center my-8">
+		<div className="flex items-center" style={{ margin: 0 }}>
 			<span className="h-px w-full bg-gray-200" />
 			<span className="prose">
 				<h2 className=" font-serif font-bold m-4">{children}</h2>
