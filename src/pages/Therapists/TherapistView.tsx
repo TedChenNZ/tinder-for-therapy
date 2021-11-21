@@ -1,5 +1,8 @@
 import React from "react";
 import { IPaymentOption, ITherapist, ITherapistReaction, Reaction } from "src/services/therapist/TherapistAPI";
+import locationSVG from "./location.svg";
+import crossSVG from "./cross.svg";
+import heartSVG from "./heart.svg";
 
 interface ITherapistViewProps {
 	therapist: ITherapist;
@@ -8,23 +11,29 @@ interface ITherapistViewProps {
 
 export default function TherapistView({ therapist, onTherapistReaction }: ITherapistViewProps) {
 	return (
-		<div className="border border-gray-400 bg-white rounded-lg p-8 shadow-lg">
+		<div className="border border-gray-400 bg-white rounded-2xl p-8 shadow-lg prose">
 			{/** Header */}
 			<div className="flex flex-col items-center">
-				<img className="rounded-full w-20 h-20 object-cover m-4" src={therapist.primaryImageUrl} />
-				<h1 className="font-serif text-blue-700">
+				<img className="mb-8 rounded-full w-24 h-24 object-cover" src={therapist.primaryImageUrl} />
+
+				<h1 className="font-serif m-0" style={{ margin: 0 }}>
 					{therapist.firstName} {therapist.lastName}
 				</h1>
-				<h3 className="font-sans text-gray-500">{therapist.profession}</h3>
+				<h3 className="font-sans m-0" style={{ margin: 0 }}>
+					{therapist.profession}
+				</h3>
 			</div>
 
-			<hr className="my-4" />
+			<hr />
 
 			{/** Quick Info */}
 
-			<div className="prose">
+			<div className="text-sm">
 				<ul>
-					<li>{therapist.location}</li>
+					<div className="flex">
+						<img className="flex align-middle h-5 w-6 pb-0.5 pt-1 pr-2 m-0" style={{ margin: 0 }} src={locationSVG} />
+						<span>{therapist.location}</span>
+					</div>
 					<li>{therapist.languages.join(", ")}</li>
 					<li>Specialises in {therapist.specialisations.join(", ")}</li>
 				</ul>
@@ -33,13 +42,13 @@ export default function TherapistView({ therapist, onTherapistReaction }: IThera
 			{/** Bio */}
 			<div>
 				<H2>Bio</H2>
-				<p className="prose">{therapist.biography}</p>
+				<p className="text-sm">{therapist.biography}</p>
 			</div>
 
 			{/** Specialisations */}
 			<div>
 				<H2>Specialisations</H2>
-				<div className="prose">
+				<div className="text-sm">
 					<ul>
 						{therapist.specialisations.map((spec) => (
 							<li key={spec}>{spec}</li>
@@ -66,19 +75,19 @@ export default function TherapistView({ therapist, onTherapistReaction }: IThera
 				</div>
 			</div>
 
-			{/** Actions */}
+			{/** Reactions */}
 			<div className="w-full flex justify-center	">
 				<button
-					className="btn btn-outline btn-neutral w-16 h-16 m-2"
+					className="btn btn-outline btn-circle btn-neutral w-16 h-16 m-2"
 					onClick={() => onTherapistReaction({ therapistID: therapist.id, reaction: Reaction.DISLIKE })}
 				>
-					X
+					<img style={{ margin: 0 }} className="h-6 w-6" src={crossSVG} />
 				</button>
 				<button
-					className="btn btn-primary w-16 h-16 m-2"
+					className="btn btn-primary btn-circle w-16 h-16 m-2"
 					onClick={() => onTherapistReaction({ therapistID: therapist.id, reaction: Reaction.LIKE })}
 				>
-					❤️
+					<img style={{ margin: 0 }} className="h-6 w-6" src={heartSVG} />
 				</button>
 			</div>
 		</div>
@@ -87,22 +96,24 @@ export default function TherapistView({ therapist, onTherapistReaction }: IThera
 
 const H2: React.FC = ({ children }) => {
 	return (
-		<div className="flex items-center">
-			<span className="h-0.5 w-full bg-gray-100" />
-			<h2 className="text-blue-700 font-serif font-bold m-4">{children}</h2>
-			<span className="h-0.5 w-full bg-gray-100" />
+		<div className="flex items-center my-8">
+			<span className="h-px w-full bg-gray-200" />
+			<span className="prose">
+				<h2 className=" font-serif font-bold m-4">{children}</h2>
+			</span>
+			<span className="h-px w-full bg-gray-200" />
 		</div>
 	);
 };
 
 const PaymentOption = ({ paymentOption }: { paymentOption: IPaymentOption }) => {
 	return (
-		<div className="border border-blue-400 bg-white rounded-md p-2 my-2">
-			<div className="flex font-bold justify-between text-blue-700">
-				<p>{paymentOption.name}</p>
-				<p>${paymentOption.cost}</p>
+		<div className="shadow-lg rounded-2xl bg-white dark:bg-gray-800 p-4 m-4 border border-gray-400">
+			<div className="text-gray-800 dark:text-gray-50 text-xl font-medium mb-4">{paymentOption.name}</div>
+			<div className="text-gray-900 dark:text-white text-3xl font-bold">
+				${paymentOption.cost}
+				<span className="text-gray-400 text-sm font-medium mx-1">for {paymentOption.bookingLength} minutes</span>
 			</div>
-			<p className="text-gray-500">{paymentOption.bookingLength} minutes</p>
 		</div>
 	);
 };
