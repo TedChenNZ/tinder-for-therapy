@@ -49,7 +49,7 @@ export function TherapistsView({ therapists, therapistReactions }: ITherapistsVi
 					);
 				})
 			) : (
-				<div>
+				<div data-id="no-more-therapists">
 					<p>No more therapists</p>
 				</div>
 			)}
