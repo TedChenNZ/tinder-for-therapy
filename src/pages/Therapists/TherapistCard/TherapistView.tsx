@@ -9,7 +9,7 @@ interface ITherapistViewProps {
 	onTherapistReaction: (therapistReaction: ITherapistReaction) => Promise<void>;
 }
 
-export default function TherapistView({ therapist, onTherapistReaction }: ITherapistViewProps) {
+export function TherapistView({ therapist, onTherapistReaction }: ITherapistViewProps) {
 	return (
 		<div className="border border-gray-400 bg-white rounded-2xl p-8 shadow-lg prose w-full">
 			{/** Header */}

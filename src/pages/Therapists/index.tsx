@@ -1,8 +1,8 @@
 import React from "react";
 import { TherapistService } from "src/services/therapist/TherapistService";
-import Header from "./Header";
-import LoadingScreen from "./LoadingScreen";
-import TherapistsView from "./TherapistsView";
+import { Header } from "./Header";
+import { LoadingScreen } from "./LoadingScreen";
+import { TherapistsView } from "./TherapistsView";
 
 interface ITherapistsProps {}
 

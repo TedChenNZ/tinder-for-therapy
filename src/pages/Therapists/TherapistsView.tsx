@@ -1,14 +1,14 @@
 import React, { useMemo } from "react";
 import { ITherapist, ITherapistReaction } from "src/services/therapist/TherapistAPI";
 import { TherapistService } from "src/services/therapist/TherapistService";
-import TherapistView from "./TherapistView";
+import { TherapistView } from "./TherapistCard/TherapistView";
 
 interface ITherapistsViewProps {
 	therapists: ITherapist[];
 	therapistReactions: ITherapistReaction[];
 }
 
-export default function TherapistsView({ therapists, therapistReactions }: ITherapistsViewProps) {
+export function TherapistsView({ therapists, therapistReactions }: ITherapistsViewProps) {
 	const updateTherapistReaction = TherapistService.useUpdateTherapistReactions();
 	const onTherapistReaction = async (therapistReaction: ITherapistReaction) => {
 		await updateTherapistReaction.mutate(therapistReaction);

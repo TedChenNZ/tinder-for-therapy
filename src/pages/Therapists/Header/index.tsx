@@ -7,14 +7,14 @@ interface IHeaderProps {
 	therapistReactions: ITherapistReaction[];
 }
 
-export default function Header({ therapistReactions }: IHeaderProps) {
+export function Header({ therapistReactions }: IHeaderProps) {
 	const totalLikes = useMemo(() => {
 		return therapistReactions.filter((reaction) => reaction.reaction === Reaction.LIKE).length;
 	}, [therapistReactions]);
 	return (
 		<div className="flex w-full justify-between h-16 p-4">
 			<img src={logoImg} />
-			<div className="flex items-center" style={{ color: "rgb(74, 135, 207)" }}>
+			<div className="flex items-center text-brand">
 				<span>{totalLikes}</span> <img className="h-full" src={heartSVG} />
 			</div>
 		</div>
